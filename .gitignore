@@ -1,0 +1,28 @@
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Environment files
+*.env
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Flask-related files
+instance/
+.migrations/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and debug files
+*.log
