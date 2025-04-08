@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/kyle-mendoza/workspace/personal/flask-react-calorie-app-server/.venv"
+set -gx VIRTUAL_ENV "/Users/kael/Documents/MyCode/flask-react-calorie-app-server/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

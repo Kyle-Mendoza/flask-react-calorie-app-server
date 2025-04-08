@@ -1,4 +1,4 @@
-#!/home/kyle-mendoza/workspace/personal/flask-react-calorie-app-server/.venv/bin/python
+#!/Users/kael/Documents/MyCode/flask-react-calorie-app-server/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
