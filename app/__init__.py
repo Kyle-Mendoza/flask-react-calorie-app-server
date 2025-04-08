@@ -13,6 +13,7 @@ from app.routes.api.user_api import user_api
 from app.routes.api.admin_api import admin_api
 from app.routes.admin.admin_routes import admin
 
+from app.scripts.seed import seed
 from app.config import DevelopmentConfig, TestingConfig, ProductionConfig
 
 load_dotenv()
@@ -20,6 +21,7 @@ load_dotenv()
 def create_app():
   app = Flask(__name__)
 
+  app.cli.add_command(seed)
 
   env = os.getenv("FLASK_ENV", "development")
 
