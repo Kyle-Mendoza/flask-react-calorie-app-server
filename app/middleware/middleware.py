@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify, g
 from flask_jwt_extended import verify_jwt_in_request, get_jwt_identity
 from functools import wraps
 from jwt.exceptions import ExpiredSignatureError, DecodeError
@@ -13,17 +13,11 @@ def jwt_required_middleware(func):
     try:
       # Verify that the JWT is present and valid
       verify_jwt_in_request()
-      user_identity = get_jwt_identity()
-    except ExpiredSignatureError:
-      return jsonify({"message": "Token has expired!"}), 401
-    except DecodeError:
-      return jsonify({"message": "Token is invalid!"}), 401
+      g.user_identity = get_jwt_identity()
+
     except Exception as e:
-      return jsonify({"message": "Token is missing or invalid!"}), 401
-
-
-    # Attach the user identity to the request object
-    request.user_identity = user_identity
+      return jsonify({"message": str(e)}), 401
+    
     return func(*args, **kwargs)
 
   return wrapper
