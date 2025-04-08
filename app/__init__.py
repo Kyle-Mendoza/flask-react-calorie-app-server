@@ -12,6 +12,7 @@ from app.routes.api.api_routes import api
 from app.routes.api.user_api import user_api
 from app.routes.api.admin_api import admin_api
 from app.routes.admin.admin_routes import admin
+from app.routes.admin.food_routes import food
 
 from app.scripts.seed import seed
 from app.config import DevelopmentConfig, TestingConfig, ProductionConfig
@@ -40,13 +41,15 @@ def create_app():
   with app.app_context():
     from app.models.user import User  # Ensure User model is imported
     from app.models.admin import Admin  # Ensure Admin model is imported
-
+    from app.models.food import Food
 
   CORS(app)
 
   app.register_blueprint(main)
   app.register_blueprint(api, url_prefix="/api")
   app.register_blueprint(admin, url_prefix="/api/admin")
+  app.register_blueprint(food, url_prefix="/api/admin/food")
+
   app.register_blueprint(user_api, url_prefix="/api/user")
   # app.register_blueprint(admin_api, url_prefix="/api/admin")
 
