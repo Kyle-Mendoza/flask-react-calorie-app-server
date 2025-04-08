@@ -8,9 +8,6 @@ from dotenv import load_dotenv
 
 from app.extensions import db, migrate
 from app.routes.user.user_routes import main
-from app.routes.api.api_routes import api
-from app.routes.api.user_api import user_api
-from app.routes.api.admin_api import admin_api
 from app.routes.admin.admin_routes import admin
 from app.routes.admin.food_routes import food
 
@@ -46,11 +43,9 @@ def create_app():
   CORS(app)
 
   app.register_blueprint(main)
-  app.register_blueprint(api, url_prefix="/api")
+
   app.register_blueprint(admin, url_prefix="/api/admin")
   app.register_blueprint(food, url_prefix="/api/admin/food")
 
-  app.register_blueprint(user_api, url_prefix="/api/user")
-  # app.register_blueprint(admin_api, url_prefix="/api/admin")
 
   return app

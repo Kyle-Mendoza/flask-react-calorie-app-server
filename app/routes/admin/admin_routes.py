@@ -22,7 +22,7 @@ def login():
     ), 401
   
   if admin and admin.check_password(password):
-    token = create_access_token(identity=admin.id)
+    token = create_access_token(identity="admin.id")
     return jsonify({
       "access_token": token,
       "admin": {

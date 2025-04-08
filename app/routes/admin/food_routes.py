@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 
 from app.extensions import db 
 from app.models.food import Food 
@@ -6,6 +7,10 @@ from app.models.food import Food
 
 food = Blueprint("food_routes", __name__)
 
+@food.before_request
+@jwt_required()
+def require_jwt():
+    pass
 
 @food.route("/")
 def get_all_food():
